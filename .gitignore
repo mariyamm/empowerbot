@@ -3,6 +3,9 @@ env/
 venv/
 empowerbot-env/
 site_packages/
+Lib/
+Scripts/
+Include/
 
 # Ignore Python cache files
 __pycache__/

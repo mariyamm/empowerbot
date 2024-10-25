@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerBot</title>
+    <h1>EmpowerBot</h1>
+    <script>
+        async function startApp() {
+            const response = await fetch('/load-knowledge-base', {
+                method: 'POST'
+            });
+            const data = await response.json();
+            console.log("Knowledge base loaded:", data);
+            alert("Knowledge base loaded. Check console for details.");
+        }
+    </script>
+</head>
+<body>
+    <button onclick="startApp()">Start</button>
+</body>
+</html>
