@@ -1,0 +1,28 @@
+# Ignore virtual environment directories
+env/
+venv/
+empowerbot-env/
+site_packages/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files and temporary files
+*.log
+*.tmp
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+
+# Ignore other files and directories
+*.bak
+*.swp
