@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmpowerBot</title>
-    <h1>EmpowerBot</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         async function startApp() {
             const response = await fetch('/load-knowledge-base', {
@@ -17,6 +17,24 @@
     </script>
 </head>
 <body>
+<body>
+    <h1>EmpowerBot</h1>
     <button onclick="startApp()">Start</button>
+    <div class="container">
+        
+        <div id="chatbox">
+            <div id="messages"></div>
+        </div>
+        <input type="text" id="phone" placeholder="Enter your phone number" />
+        <button id="start">Start Chat</button>
+        <div id="question-section" style="display:none;">
+            <input type="text" id="question" placeholder="Ask your question here" />
+            <button id="chat">Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
+
