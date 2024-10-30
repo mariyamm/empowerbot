@@ -4,6 +4,14 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import spacy
 import pandas as pd
 from typing import Dict
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+# Ensure that the NLTK resources are downloaded
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('punkt_tab')
 
 class SentimentAnalysis:
     def __init__(self):
@@ -24,13 +32,13 @@ class SentimentAnalysis:
         print("Emotion Result Structure:", emotion_result)  # Print the result structure for debugging
         
         # Assuming the expected structure is still a list of dictionaries
-        if isinstance(emotion_result, list) and len(emotion_result) > 0 and isinstance(emotion_result[0], dict):
-            emotion = emotion_result[0]['label']
-            emotion_score = emotion_result[0]['score']
+        if isinstance(emotion_result, list) and len(emotion_result) > 0 and isinstance(emotion_result[0], list):
+            emotion = emotion_result[0][0]['label']
+            emotion_score = emotion_result[0][0]['score']
         else:
             emotion = "Unknown"
             emotion_score = 0.0
-        
+         # Print the emotion and score for debugging
         return {
             "sentiment": sentiment,
             "sentiment_score": sentiment_score,
@@ -52,8 +60,16 @@ class SentimentAnalysis:
         Extracts keywords from the text using spaCy's NLP model.
         Filters for nouns, verbs, and adjectives.
         """
-        doc = self.nlp(text)
-        keywords = [token.text for token in doc if token.pos_ in ("NOUN", "VERB", "ADJ")]
+
+        # Tokenize the text into words
+        words = word_tokenize(text)
+        
+        # Define stop words
+        stop_words = set(stopwords.words('english'))
+        
+        # Filter out stop words and non-alphabetic words
+        keywords = [word for word in words if word.lower() not in stop_words and word.isalpha()]
+        
         return keywords
     
     def analyze_engagement(self, text: str) -> Dict[str, int]:
