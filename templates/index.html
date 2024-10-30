@@ -16,17 +16,23 @@
         }
     </script>
 </head>
+
 <body>
-<body>
-    <h1>EmpowerBot</h1>
-    <button onclick="startApp()">Start</button>
+    <h1 id = "empowerbot-text">empowerbot</h1>
+
+
+    <button onclick="startApp()">Load DB</button>
     <div class="container">
         
         <div id="chatbox">
             <div id="messages"></div>
         </div>
+
+        
         <input type="text" id="phone" placeholder="Enter your phone number" />
         <button id="start">Start Chat</button>
+        
+
         <div id="question-section" style="display:none;">
             <input type="text" id="question" placeholder="Ask your question here" />
             <button id="chat">Send</button>
